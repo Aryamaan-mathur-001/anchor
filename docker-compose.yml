@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: anchor
+      POSTGRES_PASSWORD: anchor
+      POSTGRES_DB: anchor
+    ports:
+      - "5432:5432"
+    volumes:
+      - anchor_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U anchor"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://anchor:anchor@db:5432/anchor?schema=public
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    command: sh -c "npx prisma migrate deploy && node server.js"
+
+volumes:
+  anchor_db_data:
