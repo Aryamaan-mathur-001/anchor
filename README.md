@@ -1,6 +1,11 @@
-# Anchor
+# ⚓ Anchor — A Full-Stack Task Logbook (Next.js + PostgreSQL + Docker + CI/CD)
 
-A logbook-style task and project tracker, built as a full-stack Next.js app with a containerized PostgreSQL backend and a CI/CD pipeline.
+**A logbook-style task and project tracker, built full-stack in TypeScript.**
+
+![CI](https://github.com/Aryamaan-mathur-001/anchor/actions/workflows/ci.yml/badge.svg)
+![Next.js](https://img.shields.io/badge/Next.js-14-000000)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6)
+![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)
 
 Anchor treats your work like ship's log entries: each task is logged with a timestamp, a project tag, a priority, and a status you can advance from **Open → Underway → Closed**.
 
