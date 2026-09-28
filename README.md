@@ -35,7 +35,8 @@ anchor/
 │   ├── components/              # EntryRow, NewEntryForm, StatusStamp, PriorityMark
 │   └── lib/                     # Prisma client singleton, shared types
 ├── prisma/
-│   └── schema.prisma            # Task model
+│   ├── schema.prisma            # Task model
+│   └── migrations/              # SQL migrations applied by `prisma migrate deploy`
 ├── Dockerfile                    # multi-stage production build
 ├── docker-compose.yml            # app + Postgres for local dev
 └── .github/workflows/ci.yml      # lint, build, test, image publish
@@ -48,7 +49,7 @@ Requirements: Node.js 20+, a local or hosted PostgreSQL instance.
 ```bash
 npm install
 cp .env.example .env          # edit DATABASE_URL if needed
-npx prisma migrate dev --name init
+npx prisma migrate deploy
 npm run dev
 ```
 

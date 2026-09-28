@@ -27,7 +27,7 @@ services:
       NODE_ENV: production
     ports:
       - "3000:3000"
-    command: sh -c "npx prisma migrate deploy && node server.js"
+    command: sh -c "prisma migrate deploy && node server.js"
 
 volumes:
   anchor_db_data:
